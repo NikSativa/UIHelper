@@ -5,15 +5,14 @@ import PackageDescription
 let package = Package(
     name: "UIKitHelper",
     platforms: [
-        .iOS(.v13),
-        .macOS(.v11)
+        .iOS(.v13)
     ],
     products: [
         .library(name: "UIKitHelper", targets: ["UIKitHelper"]),
         .library(name: "UIKitHelperTestHelpers", targets: ["UIKitHelperTestHelpers"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "2.2.0"))
+        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "2.2.2"))
     ],
     targets: [
         .target(name: "UIKitHelper",
