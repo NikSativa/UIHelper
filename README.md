@@ -4,6 +4,47 @@
 
 This library is a collection of helper classes and extensions to make UIKit development easier.
 
+### AutoLayoutBuilder
+AutoLayoutBuilder is a class that allows you to create/activate constraints using a simple and readable syntax.
+
+```swift
+let constraintsResult = AutoLayoutBuilder.activate {
+    subview.widthAnchor.constraint(equalTo: view.widthAnchor)
+    subview.heightAnchor.constraint(equalTo: view.heightAnchor)
+
+    if isOptional {
+        subview.widthAnchor.constraint(equalTo: view.widthAnchor)
+    }
+
+    if isOptional {
+        subview.widthAnchor.constraint(equalTo: view.widthAnchor)
+    } else {
+        subview.widthAnchor.constraint(equalTo: view.widthAnchor)
+    }
+
+    if isOptional {
+        subview.widthAnchor.constraint(equalTo: view.widthAnchor)
+        subview.widthAnchor.constraint(equalTo: view.widthAnchor)
+    } else {
+        subview.widthAnchor.constraint(equalTo: view.widthAnchor)
+        subview.widthAnchor.constraint(equalTo: view.widthAnchor)
+    }
+
+    isOptional ? subview.widthAnchor.constraint(equalTo: view.widthAnchor) : nil
+    isOptional ? nil : subview.widthAnchor.constraint(equalTo: view.widthAnchor)
+
+    if #available(iOS 13, *) {
+        subview.heightAnchor.constraint(equalTo: view.heightAnchor)
+    }
+
+    for _ in 0..<2 {
+        subview.heightAnchor.constraint(equalTo: view.heightAnchor)
+    }
+
+    [subview.heightAnchor.constraint(equalTo: view.heightAnchor)]
+}
+```
+
 ### ModalPresenter
 ModalPresenter is a class that allows you to present a view controller as a modal view controller.
 
