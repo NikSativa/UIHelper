@@ -1,6 +1,6 @@
 import SpryKit
+import UIHelper
 import UIKit
-import UIKitHelper
 
 extension TableViewStyleProperty: StylePropertyTestable {
     public static func ==(lhs: TableViewStyleProperty, rhs: TableViewStyleProperty) -> Bool {

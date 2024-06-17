@@ -1,6 +1,6 @@
 import Foundation
+import UIHelper
 import UIKit
-import UIKitHelper
 import XCTest
 
 final class AutoLayoutBuilderTests: XCTestCase {

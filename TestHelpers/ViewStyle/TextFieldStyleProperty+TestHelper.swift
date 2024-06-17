@@ -1,6 +1,6 @@
 import SpryKit
+import UIHelper
 import UIKit
-import UIKitHelper
 
 extension TextFieldStyleProperty: StylePropertyTestable {
     public func isApplied(to view: UITextField) -> Bool {

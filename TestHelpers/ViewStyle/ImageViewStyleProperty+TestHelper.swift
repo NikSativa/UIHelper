@@ -1,6 +1,6 @@
 import SpryKit
+import UIHelper
 import UIKit
-import UIKitHelper
 
 extension ImageViewStyleProperty: StylePropertyTestable {
     public func isApplied(to view: UIImageView) -> Bool {

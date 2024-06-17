@@ -1,6 +1,6 @@
 import SpryKit
+import UIHelper
 import UIKit
-import UIKitHelper
 
 extension StackViewStyleProperty: StylePropertyTestable {
     public func isApplied(to view: UIStackView) -> Bool {

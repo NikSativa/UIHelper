@@ -1,5 +1,5 @@
 import Foundation
-import UIKitHelper
+import UIHelper
 import XCTest
 
 @inline(__always)

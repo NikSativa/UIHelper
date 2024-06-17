@@ -1,6 +1,6 @@
 import SpryKit
+import UIHelper
 import UIKit
-import UIKitHelper
 
 public final class FakeKeyboardHandlerDelegate: KeyboardHandlerDelegate, Spryable {
     public enum ClassFunction: String, StringRepresentable {

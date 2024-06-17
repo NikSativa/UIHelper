@@ -1,10 +1,10 @@
 import Foundation
 import SpryKit
+import UIHelperTestHelpers
 import UIKit
-import UIKitHelperTestHelpers
 import XCTest
 
-@testable import UIKitHelper
+@testable import UIHelper
 
 final class ModalPresenterTests: XCTestCase {
     func test_spec() {

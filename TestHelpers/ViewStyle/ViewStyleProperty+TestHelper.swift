@@ -1,6 +1,6 @@
 import SpryKit
+import UIHelper
 import UIKit
-import UIKitHelper
 
 extension ViewStyleProperty: StylePropertyTestable {
     public static func ==(lhs: ViewStyleProperty, rhs: ViewStyleProperty) -> Bool {

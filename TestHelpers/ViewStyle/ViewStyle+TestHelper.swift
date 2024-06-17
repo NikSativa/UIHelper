@@ -1,5 +1,5 @@
 import SpryKit
-import UIKitHelper
+import UIHelper
 
 public protocol StylePropertyTestable: ApplicableStyleProperty {
     func isApplied(to view: ViewType) -> Bool

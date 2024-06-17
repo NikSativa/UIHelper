@@ -2,7 +2,7 @@ import Foundation
 import SpryKit
 import UIKit
 
-import UIKitHelper
+import UIHelper
 
 public extension KeyboardHandlerConfiguration {
     enum Constant {

@@ -1,6 +1,6 @@
-# UIKitHelper
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FNikSativa%2FUIKitHelper%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/NikSativa/UIKitHelper)
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FNikSativa%2FUIKitHelper%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/NikSativa/UIKitHelper)
+# UIHelper
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FNikSativa%2FUIHelper%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/NikSativa/UIHelper)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FNikSativa%2FUIHelper%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/NikSativa/UIHelper)
 
 This library is a collection of helper classes and extensions to make UIKit development easier.
 

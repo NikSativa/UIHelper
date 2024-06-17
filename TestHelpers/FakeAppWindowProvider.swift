@@ -1,6 +1,6 @@
 import SpryKit
+import UIHelper
 import UIKit
-import UIKitHelper
 
 public final class FakeAppWindowProvider: AppWindowProviding, Spryable {
     public enum ClassFunction: String, StringRepresentable {

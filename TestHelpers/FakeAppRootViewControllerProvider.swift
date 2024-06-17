@@ -1,7 +1,7 @@
 import Foundation
 import SpryKit
+import UIHelper
 import UIKit
-import UIKitHelper
 
 public final class FakeAppRootViewControllerProvider: AppRootViewControllerProviding, Spryable {
     public enum ClassFunction: String, StringRepresentable {

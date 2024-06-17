@@ -1,6 +1,6 @@
 import SpryKit
+import UIHelper
 import UIKit
-import UIKitHelper
 
 extension CollectionViewStyleProperty: StylePropertyTestable {
     public func isApplied(to collectionView: UICollectionView) -> Bool {

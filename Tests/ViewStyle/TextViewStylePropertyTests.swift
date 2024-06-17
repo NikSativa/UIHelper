@@ -1,7 +1,7 @@
 import SpryKit
+import UIHelper
+import UIHelperTestHelpers
 import UIKit
-import UIKitHelper
-import UIKitHelperTestHelpers
 import XCTest
 
 final class TextViewStylePropertyTests: XCTestCase {
