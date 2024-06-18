@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIHelper
 import UIKit
@@ -27,3 +28,4 @@ public final class FakeModalPresenter: ModalPresenting, Spryable {
         return spryify(arguments: animated)
     }
 }
+#endif

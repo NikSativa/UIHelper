@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import Foundation
 import SpryKit
 import UIKit
@@ -23,3 +24,4 @@ public extension KeyboardHandlerConfiguration {
                                             layoutIfNeeded: layoutIfNeeded)
     }
 }
+#endif

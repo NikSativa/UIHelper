@@ -1,7 +1,8 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIHelper
-import UIHelperTestHelpers
 import UIKit
+import UITestHelpers
 import XCTest
 
 final class ViewStyleTests: XCTestCase {
@@ -61,3 +62,4 @@ final class ViewStyleTests: XCTestCase {
         XCTAssertStyle(style, beAppliedTo: label)
     }
 }
+#endif

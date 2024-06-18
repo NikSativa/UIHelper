@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIKit
 
@@ -44,3 +45,4 @@ internal func isEqual(_ lhs: UIColor?, _ rhs: UIColor?) -> Bool {
 
     return lhs.cgColor == rhs.cgColor
 }
+#endif

@@ -1,7 +1,8 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIHelper
-import UIHelperTestHelpers
 import UIKit
+import UITestHelpers
 import XCTest
 
 final class StackViewStylePropertyTests: XCTestCase {
@@ -26,3 +27,4 @@ final class StackViewStylePropertyTests: XCTestCase {
         XCTAssertStyle(style, beAppliedTo: view)
     }
 }
+#endif

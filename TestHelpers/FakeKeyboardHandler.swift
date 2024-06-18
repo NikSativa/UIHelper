@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIHelper
 import UIKit
@@ -17,3 +18,4 @@ public final class FakeKeyboardHandler: KeyboardHandling, Spryable {
         return spryify(arguments: configuration, excluded)
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIHelper
 import UIKit
@@ -18,3 +19,4 @@ extension LabelStyleProperty: StylePropertyTestable {
         }
     }
 }
+#endif

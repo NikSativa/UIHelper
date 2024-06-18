@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIHelper
 import UIKit
@@ -29,3 +30,4 @@ extension CollectionViewStyleProperty: StylePropertyTestable {
         return false
     }
 }
+#endif

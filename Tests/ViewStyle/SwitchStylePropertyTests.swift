@@ -1,7 +1,8 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIHelper
-import UIHelperTestHelpers
 import UIKit
+import UITestHelpers
 import XCTest
 
 final class SwitchStylePropertyTests: XCTestCase {
@@ -24,3 +25,4 @@ final class SwitchStylePropertyTests: XCTestCase {
         XCTAssertStyle(style, beAppliedTo: view)
     }
 }
+#endif

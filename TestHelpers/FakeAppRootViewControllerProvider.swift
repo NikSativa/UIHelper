@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import Foundation
 import SpryKit
 import UIHelper
@@ -16,3 +17,4 @@ public final class FakeAppRootViewControllerProvider: AppRootViewControllerProvi
         return spryify()
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 public enum ScreenSize {
@@ -68,3 +69,4 @@ private extension ScreenSize {
         }
     }
 }
+#endif

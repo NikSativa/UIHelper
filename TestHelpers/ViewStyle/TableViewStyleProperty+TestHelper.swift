@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIHelper
 import UIKit
@@ -64,3 +65,4 @@ extension TableViewStyleProperty: StylePropertyTestable {
         return false
     }
 }
+#endif

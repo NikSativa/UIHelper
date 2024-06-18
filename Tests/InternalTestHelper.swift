@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import UIKit
 
 internal extension UIImage {
@@ -31,3 +32,4 @@ internal extension UIImage {
         }
     }
 }
+#endif

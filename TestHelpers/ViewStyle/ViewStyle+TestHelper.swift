@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIHelper
 
@@ -17,3 +18,4 @@ public extension ViewStyle where T: StylePropertyTestable {
         return failed
     }
 }
+#endif

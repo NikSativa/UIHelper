@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import Foundation
 import UIHelper
 import UIKit
@@ -229,3 +230,4 @@ final class AutoLayoutBuilderTests: XCTestCase {
         XCTAssertTrue(!constraintsResult.contains { $0.isActive })
     }
 }
+#endif

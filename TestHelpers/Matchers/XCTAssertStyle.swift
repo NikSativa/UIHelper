@@ -1,3 +1,4 @@
+#if canImport(UIKit) && os(iOS)
 import Foundation
 import UIHelper
 import XCTest
@@ -15,3 +16,4 @@ public func XCTAssertStyle<T: StylePropertyTestable>(_ style: ViewStyle<T>,
     let failed = style.notAppliedProperty(to: view)
     XCTAssertNil(failed, "\(String(describing: failed))", file: file, line: line)
 }
+#endif

@@ -1,7 +1,8 @@
+#if canImport(UIKit) && os(iOS)
 import Foundation
 import SpryKit
-import UIHelperTestHelpers
 import UIKit
+import UITestHelpers
 import XCTest
 
 @testable import UIHelper
@@ -128,3 +129,4 @@ private final class FakeUIViewController: UIViewController, Spryable {
         return spryify(arguments: flag, completion)
     }
 }
+#endif

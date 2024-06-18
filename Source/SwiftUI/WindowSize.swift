@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 public extension Notification.Name {
@@ -47,3 +48,4 @@ private struct WindowSizeKeyModifier: ViewModifier {
         }
     }
 }
+#endif

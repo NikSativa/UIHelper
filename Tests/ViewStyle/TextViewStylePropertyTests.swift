@@ -1,7 +1,8 @@
+#if canImport(UIKit) && os(iOS)
 import SpryKit
 import UIHelper
-import UIHelperTestHelpers
 import UIKit
+import UITestHelpers
 import XCTest
 
 final class TextViewStylePropertyTests: XCTestCase {
@@ -32,3 +33,4 @@ final class TextViewStylePropertyTests: XCTestCase {
         XCTAssertStyle(style, beAppliedTo: view)
     }
 }
+#endif

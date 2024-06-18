@@ -1,4 +1,4 @@
-import Foundation
+#if canImport(UIKit) && os(iOS)
 import UIKit
 
 public enum UITestHelper {
@@ -232,3 +232,4 @@ public enum UITestHelper {
         }
     }
 }
+#endif
