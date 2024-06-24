@@ -24,5 +24,15 @@ public extension View {
             self
         }
     }
+
+    @ViewBuilder
+    func iflet<T>(_ t: T?,
+                  content: (Self, T) -> some View) -> some View {
+        if let t {
+            content(self, t)
+        } else {
+            self
+        }
+    }
 }
 #endif
