@@ -1,13 +1,10 @@
 #if canImport(SwiftUI)
 import SwiftUI
 
-public extension Notification.Name {
-    static let WindowSizeDidChange = Notification.Name("WindowSizeDidChange")
-}
-
-public struct WindowSizeKey: EnvironmentKey {
-    public static var defaultValue: CGRect = .zero
-    public init() {}
+public extension View {
+    func trackWindowSize() -> some View {
+        modifier(WindowSizeKeyModifier())
+    }
 }
 
 // MARK: - EnvironmentValues
@@ -19,12 +16,6 @@ public extension EnvironmentValues {
             let oldValue = windowSize
             if oldValue != newValue {
                 self[WindowSizeKey.self] = newValue
-                NotificationCenter.default.post(name: .WindowSizeDidChange,
-                                                object: nil,
-                                                userInfo: [
-                                                    "oldValue": oldValue,
-                                                    "newValue": newValue
-                                                ])
             }
         }
     }
@@ -32,15 +23,11 @@ public extension EnvironmentValues {
 
 // MARK: - WindowSizeKeyModifier
 
-public extension View {
-    func trackWindowSize() -> some View {
-        modifier(WindowSizeKeyModifier())
-    }
+private struct WindowSizeKey: EnvironmentKey {
+    static var defaultValue: CGRect = .zero
 }
 
 private struct WindowSizeKeyModifier: ViewModifier {
-    @Environment(\.windowSize) var windowSize
-
     func body(content: Content) -> some View {
         GeometryReader { geometry in
             let newSize = geometry.frame(in: .global)
