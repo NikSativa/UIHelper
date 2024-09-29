@@ -6,6 +6,7 @@ public enum ModalPresenterSource {
     case barButtonItem(UIBarButtonItem)
 }
 
+@MainActor
 public protocol ModalPresenting {
     typealias Source = ModalPresenterSource
     typealias Callback = () -> Void
@@ -51,6 +52,7 @@ public extension ModalPresenting {
     }
 }
 
+@MainActor
 public final class ModalPresenter {
     public struct State {
         let viewController: UIViewController
@@ -135,9 +137,11 @@ public final class ModalPresenter {
         }
 
         isChecking = true
-        DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-            self?.isChecking = false
-            self?.checkViewControllerAvailability()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
+            MainActor.assumeIsolated {
+                self?.isChecking = false
+                self?.checkViewControllerAvailability()
+            }
         }
     }
 
@@ -206,4 +210,11 @@ private extension ModalPresenter {
         }
     }
 }
+
+#if swift(>=6.0)
+extension ModalPresenterSource: @unchecked Sendable {}
+extension ModalPresenter.State: @unchecked Sendable {}
+extension ModalPresenter: @unchecked Sendable {}
+#endif
+
 #endif

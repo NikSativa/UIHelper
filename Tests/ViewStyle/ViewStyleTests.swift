@@ -2,9 +2,9 @@
 import SpryKit
 import UIHelper
 import UIKit
-import UITestHelpers
 import XCTest
 
+@MainActor
 final class ViewStyleTests: XCTestCase {
     private typealias Style = ViewStyle<LabelStyleProperty>
     private enum Constant {

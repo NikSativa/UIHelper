@@ -4,19 +4,22 @@ import UIHelper
 import UIKit
 import XCTest
 
+@MainActor
 final class AutoLayoutBuilderTests: XCTestCase {
     private let view = UIView()
     private let subview = UIView()
     private var isOptional: Bool = .random()
 
-    override func setUp() {
-        super.setUp()
+    /// Sending main actor-isolated value of type 'XCTestCase' with later accesses to nonisolated context risks causing data races
+    private func commonSetUp() {
         subview.enableConstraints()
         view.addSubview(subview)
         isOptional.toggle()
     }
 
     func test_builder() {
+        commonSetUp()
+
         @AutoLayoutBuilder
         var constraintsResult: [NSLayoutConstraint] {
             subview.widthAnchor.constraint(equalTo: view.widthAnchor)
@@ -61,6 +64,8 @@ final class AutoLayoutBuilderTests: XCTestCase {
     }
 
     func test_NSLayoutConstraint_activate() {
+        commonSetUp()
+
         let constraintsResult = NSLayoutConstraint.activate {
             subview.widthAnchor.constraint(equalTo: view.widthAnchor)
             subview.heightAnchor.constraint(equalTo: view.heightAnchor)
@@ -103,6 +108,8 @@ final class AutoLayoutBuilderTests: XCTestCase {
     }
 
     func test_NSLayoutConstraint_combine() {
+        commonSetUp()
+
         let constraintsResult = NSLayoutConstraint.combine {
             subview.widthAnchor.constraint(equalTo: view.widthAnchor)
             subview.heightAnchor.constraint(equalTo: view.heightAnchor)
@@ -146,6 +153,8 @@ final class AutoLayoutBuilderTests: XCTestCase {
     }
 
     func test_AutoLayoutBuilder_activate() {
+        commonSetUp()
+
         let constraintsResult = AutoLayoutBuilder.activate {
             subview.widthAnchor.constraint(equalTo: view.widthAnchor)
             subview.heightAnchor.constraint(equalTo: view.heightAnchor)
@@ -188,6 +197,8 @@ final class AutoLayoutBuilderTests: XCTestCase {
     }
 
     func test_AutoLayoutBuilder_combine() {
+        commonSetUp()
+
         let constraintsResult = AutoLayoutBuilder.combine {
             subview.widthAnchor.constraint(equalTo: view.widthAnchor)
             subview.heightAnchor.constraint(equalTo: view.heightAnchor)

@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public protocol LabelLink {
     var tappableText: String { get }
 }
@@ -13,10 +14,14 @@ extension URL: LabelLink {
     }
 }
 
+@MainActor
 public final class LabelLinksHandler<Link: LabelLink> {
     public typealias Callback = (_ tappedLinks: Link) -> Void
 
     public var links: [Link] = []
+    public var action: Callback?
+    private let gestureRecognizer: UITapGestureRecognizer
+
     public var label: UILabel? {
         willSet {
             label?.isUserInteractionEnabled = true
@@ -29,18 +34,16 @@ public final class LabelLinksHandler<Link: LabelLink> {
         }
     }
 
-    public var action: Callback?
-
-    private let gestureRecognizer: UITapGestureRecognizer
-
     public init() {
         self.gestureRecognizer = UITapGestureRecognizer()
         gestureRecognizer.addTarget(self, action: #selector(tapOnLabel(sender:)))
     }
 
     deinit {
-        if label?.gestureRecognizers?.contains(gestureRecognizer) == true {
-            label?.removeGestureRecognizer(gestureRecognizer)
+        Task.detached { @MainActor [label, gestureRecognizer] in
+            if label?.gestureRecognizers?.contains(gestureRecognizer) == true {
+                label?.removeGestureRecognizer(gestureRecognizer)
+            }
         }
     }
 

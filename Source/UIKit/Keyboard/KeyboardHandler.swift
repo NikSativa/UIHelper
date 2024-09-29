@@ -5,6 +5,7 @@ public protocol KeyboardHandlerDelegate: AnyObject {
     func didChange(bottomContentInset inset: CGFloat)
 }
 
+@MainActor
 public final class KeyboardHandler {
     private let transparentTouchView: TransparentTouchView
     private let notificationCenter: NotificationCenter
@@ -21,19 +22,27 @@ public final class KeyboardHandler {
 
         observers.append(
             notificationCenter.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { [weak self] notification in
-                self?.keyboardWillShow(notification)
+                let notification = UnsafeSendable(notification)
+                MainActor.assumeIsolated {
+                    self?.keyboardWillShow(notification.value)
+                }
             }
         )
 
         observers.append(
             notificationCenter.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { [weak self] notification in
-                self?.keyboardWillHide(notification)
+                let notification = UnsafeSendable(notification)
+                MainActor.assumeIsolated {
+                    self?.keyboardWillHide(notification.value)
+                }
             }
         )
     }
 
     deinit {
-        transparentTouchView.removeFromSuperview()
+        Task.detached { @MainActor [transparentTouchView] in
+            transparentTouchView.removeFromSuperview()
+        }
     }
 }
 
@@ -132,4 +141,13 @@ extension KeyboardHandler: KeyboardHandling {
         transparentTouchView.removeFromSuperview()
     }
 }
+
+private struct UnsafeSendable<T>: @unchecked Sendable {
+    let value: T
+
+    init(_ value: T) {
+        self.value = value
+    }
+}
+
 #endif

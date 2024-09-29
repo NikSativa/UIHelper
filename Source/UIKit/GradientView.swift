@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 open class GradientView: UIView {
     override public init(frame: CGRect) {
         super.init(frame: frame)

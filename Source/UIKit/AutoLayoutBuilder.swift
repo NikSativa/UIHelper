@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 @resultBuilder
 public enum AutoLayoutBuilder {
     /// Builds an expression within the builder to support converting a constraint into the array this builder requires.
@@ -52,6 +53,7 @@ public enum AutoLayoutBuilder {
     }
 }
 
+@MainActor
 public extension AutoLayoutBuilder {
     /// Activate the layouts defined in the result builder parameter `constraints`.
     @discardableResult
@@ -65,6 +67,7 @@ public extension AutoLayoutBuilder {
     }
 }
 
+@MainActor
 public extension NSLayoutConstraint {
     /// Activate the layouts defined in the result builder parameter `constraints`.
     @discardableResult

@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public extension UIGestureRecognizer {
     var isTouchUpInside: Bool {
         guard state == .ended else {

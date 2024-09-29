@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public extension UIScrollView {
     func reachedRight(additionalSpace magicNumber: CGFloat = 4) -> Bool {
         guard contentSize.width >= bounds.width else {

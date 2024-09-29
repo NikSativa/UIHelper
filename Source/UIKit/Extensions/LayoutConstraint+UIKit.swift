@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public extension NSLayoutConstraint {
     @discardableResult
     func set(_ priority: UILayoutPriority) -> Self {

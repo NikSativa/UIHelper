@@ -1,12 +1,13 @@
 #if canImport(UIKit) && os(iOS)
 import Foundation
 import SpryKit
+import UIHelper
 import UIKit
 
-import UIHelper
-
+@MainActor
 public extension KeyboardHandlerConfiguration {
     enum Constant {
+        @MainActor
         public static let sharedView = UIView()
     }
 

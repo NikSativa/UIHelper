@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public extension UITableView {
     func applyAutomaticDimension() {
         estimatedRowHeight = UITableView.automaticDimension

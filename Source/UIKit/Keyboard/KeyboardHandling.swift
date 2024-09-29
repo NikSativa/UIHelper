@@ -1,8 +1,9 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public protocol KeyboardHandling {
-    typealias ExcludedViews = () -> [UIView]
+    typealias ExcludedViews = @Sendable () -> [UIView]
     func enable(for configuration: KeyboardHandlerConfiguration, excluded: ExcludedViews?)
 }
 

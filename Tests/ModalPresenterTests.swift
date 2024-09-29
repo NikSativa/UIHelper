@@ -2,11 +2,11 @@
 import Foundation
 import SpryKit
 import UIKit
-import UITestHelpers
 import XCTest
 
 @testable import UIHelper
 
+@MainActor
 final class ModalPresenterTests: XCTestCase {
     func test_spec() {
         let rootViewController: FakeUIViewController = .init()

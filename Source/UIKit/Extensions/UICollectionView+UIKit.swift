@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public extension UICollectionView {
     func register(cellClass: (some UICollectionViewCell).Type) {
         let className = id(of: cellClass)

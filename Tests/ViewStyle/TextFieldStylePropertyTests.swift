@@ -2,9 +2,9 @@
 import SpryKit
 import UIHelper
 import UIKit
-import UITestHelpers
 import XCTest
 
+@MainActor
 final class TextFieldStylePropertyTests: XCTestCase {
     func test_spec() {
         let view: UITextField = .init()

@@ -1,7 +1,9 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public enum UITestHelper {
+    @MainActor
     public static func prepareWindowIfNeeded(with root: UIViewController = UIViewController()) {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
@@ -10,13 +12,16 @@ public enum UITestHelper {
         window.rootViewController = root
     }
 
+    @MainActor
     public enum ViewController {
         public static func test(_ viewController: UIViewController, file _: String = #file, _: Int = #line) {
             UITestHelper.prepareWindowIfNeeded(with: viewController)
         }
     }
 
+    @MainActor
     public enum View {
+        @MainActor
         public enum Layout {
             public enum Value {
                 case flexible
@@ -76,7 +81,9 @@ public enum UITestHelper {
         }
     }
 
+    @MainActor
     public enum TableView {
+        @MainActor
         private class TestTableView: UITableView {
             var strongDataSource: NSObject?
         }
@@ -180,7 +187,9 @@ public enum UITestHelper {
         }
     }
 
+    @MainActor
     public enum CollectionView {
+        @MainActor
         private class TestCollectionView: UICollectionView {
             var strongDataSource: NSObject?
         }

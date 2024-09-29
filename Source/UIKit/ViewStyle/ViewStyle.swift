@@ -1,19 +1,18 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
-public protocol StyleProperty: Equatable {}
+@MainActor
+public protocol StyleProperty: Equatable, Sendable {}
 
+@MainActor
 public protocol ApplicableStyleProperty: StyleProperty {
     associatedtype ViewType
     func apply(to view: ViewType)
 }
 
-public final class ViewStyle<T: ApplicableStyleProperty>: Equatable, ExpressibleByArrayLiteral {
+@MainActor
+public struct ViewStyle<T: ApplicableStyleProperty>: Equatable {
     public let properties: [T]
-
-    public required init(arrayLiteral: T...) {
-        self.properties = arrayLiteral
-    }
 
     public init(_ properties: T...) {
         self.properties = properties
@@ -48,9 +47,6 @@ public final class ViewStyle<T: ApplicableStyleProperty>: Equatable, Expressible
     public static func +(lhs: T, rhs: ViewStyle<T>) -> ViewStyle<T> {
         return ViewStyle<T>([lhs] + rhs.properties)
     }
-
-    public static func ==(lhs: ViewStyle<T>, rhs: ViewStyle<T>) -> Bool {
-        return lhs.properties == rhs.properties
-    }
 }
+
 #endif

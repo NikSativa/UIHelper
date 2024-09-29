@@ -11,7 +11,9 @@ public extension View {
 
 public extension EnvironmentValues {
     var windowSize: CGRect {
-        get { self[WindowSizeKey.self] }
+        get {
+            return self[WindowSizeKey.self]
+        }
         set {
             let oldValue = windowSize
             if oldValue != newValue {
@@ -24,7 +26,7 @@ public extension EnvironmentValues {
 // MARK: - WindowSizeKeyModifier
 
 private struct WindowSizeKey: EnvironmentKey {
-    static var defaultValue: CGRect = .zero
+    static let defaultValue: CGRect = .zero
 }
 
 private struct WindowSizeKeyModifier: ViewModifier {

@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public extension UIView {
     func addAndFill(_ subview: UIView,
                     relatedToSafeArea: Bool = false,

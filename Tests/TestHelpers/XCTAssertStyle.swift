@@ -3,10 +3,11 @@ import Foundation
 import UIHelper
 import XCTest
 
+@MainActor
 @inline(__always)
 public func XCTAssertStyle<T: StylePropertyTestable>(_ style: ViewStyle<T>,
                                                      beAppliedTo view: T.ViewType?,
-                                                     file: StaticString = #file,
+                                                     file: StaticString = #filePath,
                                                      line: UInt = #line) {
     guard let view else {
         XCTFail("\(T.ViewType.self) is nil", file: file, line: line)

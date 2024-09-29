@@ -1,10 +1,12 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public protocol AppWindowProviding: AppRootViewControllerProviding {
     func appWindow() -> UIWindow
 }
 
+@MainActor
 public final class AppWindowProvider {
     private let window: UIWindow
 
@@ -15,6 +17,7 @@ public final class AppWindowProvider {
 
 // MARK: - AppWindowProviding
 
+@MainActor
 extension AppWindowProvider: AppWindowProviding {
     public func appWindow() -> UIWindow {
         return window

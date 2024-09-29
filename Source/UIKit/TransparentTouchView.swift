@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public class TransparentTouchView: UIView {
     public typealias Callback = () -> Void
     public var callback: Callback?

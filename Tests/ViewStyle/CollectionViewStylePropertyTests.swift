@@ -2,9 +2,9 @@
 import SpryKit
 import UIHelper
 import UIKit
-import UITestHelpers
 import XCTest
 
+@MainActor
 final class CollectionViewStylePropertyTests: XCTestCase {
     func test_spec() {
         let view: UICollectionView = .init(frame: .init(x: 0, y: 0, width: 100, height: 100),

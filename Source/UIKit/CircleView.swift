@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 open class CircleView: UIView {
     public var isEnabled: Bool = true {
         didSet {

@@ -2,9 +2,9 @@
 import SpryKit
 import UIHelper
 import UIKit
-import UITestHelpers
 import XCTest
 
+@MainActor
 final class TextViewStylePropertyTests: XCTestCase {
     func test_spec() {
         let view: UITextView = .init()

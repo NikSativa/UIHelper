@@ -1,6 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
+@MainActor
 public extension UIStackView {
     convenience init(axis: NSLayoutConstraint.Axis,
                      alignment: Alignment = .fill,
