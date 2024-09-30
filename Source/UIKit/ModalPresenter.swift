@@ -9,7 +9,12 @@ public enum ModalPresenterSource {
 @MainActor
 public protocol ModalPresenting {
     typealias Source = ModalPresenterSource
+
+    #if swift(>=6.0)
     typealias Callback = () -> Void
+    #else
+    typealias Callback = @Sendable () -> Void
+    #endif
 
     var topPresenter: UIViewController { get }
 

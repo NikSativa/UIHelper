@@ -1,7 +1,7 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
-public struct KeyboardHandlerConfiguration: Equatable {
+public final class KeyboardHandlerConfiguration: Equatable {
     public let view: UIView
     public let touchView: UIView?
     public weak var delegate: KeyboardHandlerDelegate?
@@ -32,4 +32,9 @@ public struct KeyboardHandlerConfiguration: Equatable {
             && lhs.keyboardPadding == rhs.keyboardPadding
     }
 }
+
+#if swift(>=6.0)
+extension KeyboardHandlerConfiguration: @unchecked Sendable {}
+#endif
+
 #endif

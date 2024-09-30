@@ -31,4 +31,9 @@ extension AppWindowProvider: AppWindowProviding {
         return rootViewController
     }
 }
+
+#if swift(>=6.0)
+extension AppWindowProvider: @unchecked Sendable {}
+#endif
+
 #endif
