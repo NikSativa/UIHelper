@@ -23,6 +23,7 @@ public final class KeyboardHandler {
         return configuration?.animated == true
     }
 
+    @MainActor
     public init(notificationCenter: NotificationCenter = .default,
                 transparentTouchView: TransparentTouchView = .init()) {
         self.notificationCenter = notificationCenter
@@ -31,18 +32,26 @@ public final class KeyboardHandler {
         observers.append(
             notificationCenter.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { [weak self] notification in
                 let notification = UnsafeSendable(notification)
+                #if swift(>=6.0)
                 MainActor.assumeIsolated {
                     self?.keyboardWillShow(notification.value)
                 }
+                #else
+                self?.keyboardWillShow(notification.value)
+                #endif
             }
         )
 
         observers.append(
             notificationCenter.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { [weak self] notification in
                 let notification = UnsafeSendable(notification)
+                #if swift(>=6.0)
                 MainActor.assumeIsolated {
                     self?.keyboardWillHide(notification.value)
                 }
+                #else
+                self?.keyboardWillHide(notification.value)
+                #endif
             }
         )
     }

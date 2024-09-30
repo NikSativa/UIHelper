@@ -143,10 +143,15 @@ public final class ModalPresenter {
 
         isChecking = true
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
+            #if swift(>=6.0)
             MainActor.assumeIsolated {
                 self?.isChecking = false
                 self?.checkViewControllerAvailability()
             }
+            #else
+            self?.isChecking = false
+            self?.checkViewControllerAvailability()
+            #endif
         }
     }
 
