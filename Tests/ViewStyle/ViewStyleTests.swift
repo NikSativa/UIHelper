@@ -7,16 +7,18 @@ import XCTest
 @MainActor
 final class ViewStyleTests: XCTestCase {
     private typealias Style = ViewStyle<LabelStyleProperty>
+
+    @MainActor
     private enum Constant {
-        static let softBlackStyle: Style = [.textColor(.black)]
+        static let softBlackStyle: Style = .init([.textColor(.black)])
 
         static let brandonRegular15SoftBlack: LabelStyleProperty = .textFont(.systemFont(ofSize: 10))
-        static let brandonRegular15SoftBlackStyle: Style = [brandonRegular15SoftBlack]
+        static let brandonRegular15SoftBlackStyle: Style = .init([brandonRegular15SoftBlack])
     }
 
     func test_spec() {
         let label: UILabel = .init()
-        var style: ViewStyle<LabelStyleProperty> = ViewStyle(.backgroundColor(.red))
+        var style: ViewStyle<LabelStyleProperty> = ViewStyle(properties: .backgroundColor(.red))
 
         // apply first random style
         style.apply(to: label)
@@ -24,10 +26,10 @@ final class ViewStyleTests: XCTestCase {
 
         // style constructor
         style = Constant.softBlackStyle + Constant.brandonRegular15SoftBlack
-        let expected: Style = [
+        let expected: Style = .init([
             .textColor(.black),
             .textFont(.systemFont(ofSize: 10))
-        ]
+        ])
         XCTAssertEqual(expected, style)
 
         // apply style

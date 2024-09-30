@@ -8,18 +8,18 @@ import XCTest
 final class PageControlStylePropertyTests: XCTestCase {
     func test_spec() {
         let view: UIPageControl = .init()
-        var style: ViewStyle<PageControlStyleProperty> = [
+        var style: ViewStyle<PageControlStyleProperty> = .init([
             .pageIndicatorTintColor(.red),
             .currentPageIndicatorTintColor(.green)
-        ]
+        ])
 
         style.apply(to: view)
         XCTAssertStyle(style, beAppliedTo: view)
 
-        style = [
+        style = .init([
             .pageIndicatorTintColor(.brown),
             .currentPageIndicatorTintColor(.yellow)
-        ]
+        ])
 
         style.apply(to: view)
         XCTAssertStyle(style, beAppliedTo: view)

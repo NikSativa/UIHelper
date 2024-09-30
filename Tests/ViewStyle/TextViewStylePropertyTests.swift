@@ -8,7 +8,7 @@ import XCTest
 final class TextViewStylePropertyTests: XCTestCase {
     func test_spec() {
         let view: UITextView = .init()
-        var style: ViewStyle<TextViewStyleProperty> = [
+        var style: ViewStyle<TextViewStyleProperty> = .init([
             .textColor(.red),
             .textFont(.systemFont(ofSize: 11)),
             .tintColor(.green),
@@ -16,11 +16,11 @@ final class TextViewStylePropertyTests: XCTestCase {
             .borderColor(.brown),
             .textContainerInset(.init(top: 10, left: 10, bottom: 10, right: 10)),
             .linkTextAttributes(.white)
-        ]
+        ])
         style.apply(to: view)
         XCTAssertStyle(style, beAppliedTo: view)
 
-        style = [
+        style = .init([
             .textColor(.green),
             .textFont(.systemFont(ofSize: 22)),
             .tintColor(.yellow),
@@ -28,7 +28,7 @@ final class TextViewStylePropertyTests: XCTestCase {
             .borderColor(.black),
             .textContainerInset(.init(top: 30, left: 10, bottom: 10, right: 10)),
             .linkTextAttributes(.magenta)
-        ]
+        ])
         style.apply(to: view)
         XCTAssertStyle(style, beAppliedTo: view)
     }

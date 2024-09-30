@@ -8,7 +8,7 @@ import XCTest
 final class ButtonStylePropertyTests: XCTestCase {
     func test_spec() {
         let view: UIButton = .init(type: .custom)
-        var style: ViewStyle<ButtonStyleProperty> = [
+        var style: ViewStyle<ButtonStyleProperty> = .init([
             .titleColor(.red, .normal),
             .backgroundColor(.blue),
             .tintColor(.green),
@@ -18,11 +18,11 @@ final class ButtonStylePropertyTests: XCTestCase {
             .backgroundImage(.testMake(.four), .normal),
             .cornerRadius(2),
             .clipsToBounds(true)
-        ]
+        ])
         style.apply(to: view)
         XCTAssertStyle(style, beAppliedTo: view)
 
-        style = [
+        style = .init([
             .titleColor(.green, .normal),
             .backgroundColor(.yellow),
             .tintColor(.white),
@@ -32,7 +32,7 @@ final class ButtonStylePropertyTests: XCTestCase {
             .backgroundImage(.testMake(.two), .normal),
             .cornerRadius(4),
             .clipsToBounds(false)
-        ]
+        ])
 
         style.apply(to: view)
         XCTAssertStyle(style, beAppliedTo: view)

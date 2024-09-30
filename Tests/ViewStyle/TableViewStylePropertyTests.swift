@@ -8,7 +8,7 @@ import XCTest
 final class TableViewStylePropertyTests: XCTestCase {
     func test_spec() {
         let view: UITableView = .init()
-        var style: ViewStyle<TableViewStyleProperty> = [
+        var style: ViewStyle<TableViewStyleProperty> = .init([
             .estimatedRowHeight(11),
             .rowHeight(22),
             .backgroundColor(.red),
@@ -17,11 +17,11 @@ final class TableViewStylePropertyTests: XCTestCase {
             .separatorColor(.green),
             .separatorInset(2),
             .separatorStyle(.singleLine)
-        ]
+        ])
         style.apply(to: view)
         XCTAssertStyle(style, beAppliedTo: view)
 
-        style = [
+        style = .init([
             .estimatedRowHeight(22),
             .rowHeight(33),
             .backgroundColor(.green),
@@ -30,7 +30,7 @@ final class TableViewStylePropertyTests: XCTestCase {
             .separatorColor(.red),
             .separatorInset(1),
             .separatorStyle(.none)
-        ]
+        ])
         style.apply(to: view)
         XCTAssertStyle(style, beAppliedTo: view)
     }

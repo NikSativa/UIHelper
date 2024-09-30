@@ -14,11 +14,11 @@ public protocol ApplicableStyleProperty: StyleProperty {
 public struct ViewStyle<T: ApplicableStyleProperty>: Equatable {
     public let properties: [T]
 
-    public init(_ properties: T...) {
+    public init(properties: T...) {
         self.properties = properties
     }
 
-    private init(_ properties: [T]) {
+    public init(_ properties: [T]) {
         self.properties = properties
     }
 
