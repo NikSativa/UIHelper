@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import Foundation
 import SwiftUI
 
@@ -19,17 +20,24 @@ private struct SelfSizeKey: PreferenceKey {
 
 @available(iOS 15.0, *)
 private struct SelfSizeModifier: ViewModifier {
-    @Binding var size: CGSize
+    let size: @Sendable (CGSize) -> Void
+
+    init(size: Binding<CGSize>) {
+        self.size = { [size] new in
+            size.wrappedValue = new
+        }
+    }
 
     func body(content: Content) -> some View {
         content.background {
             GeometryReader { proxy in
                 Color.clear
                     .preference(key: SelfSizeKey.self, value: proxy.size)
-                    .onPreferenceChange(SelfSizeKey.self) { new in
-                        size = new
+                    .onPreferenceChange(SelfSizeKey.self) { [size] new in
+                        size(new)
                     }
             }
         }
     }
 }
+#endif
