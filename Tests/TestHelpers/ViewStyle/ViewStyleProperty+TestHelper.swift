@@ -32,17 +32,22 @@ extension ViewStyleProperty: StylePropertyTestable {
         switch self {
         case .backgroundColor(let color):
             return isEqual(color, view.backgroundColor)
+
         case .border(let color, let width):
             return isEqual(view.layer.borderColor.map(UIColor.init(cgColor:)), color) && view.layer.borderWidth == width
+
         case .shadow(let radius, let opacity, let offset, let color):
             return view.layer.shadowRadius == radius
                 && view.layer.shadowOpacity == opacity
                 && view.layer.shadowOffset == offset
                 && isEqual(view.layer.shadowColor.map(UIColor.init(cgColor:)), color)
+
         case .cornerRadius(let radius):
             return view.layer.cornerRadius == radius
+
         case .clipsToBounds(let clips):
             return view.clipsToBounds == clips
+
         case .tintColor(let color):
             return isEqual(color, view.tintColor)
         }

@@ -21,20 +21,27 @@ extension NavigationBarStyleProperty: ApplicableStyleProperty {
             var textAttributes: [NSAttributedString.Key: Any] = view.titleTextAttributes ?? [:]
             textAttributes[NSAttributedString.Key.foregroundColor] = color
             view.titleTextAttributes = textAttributes
+
         case .titleFont(let font):
             var textAttributes: [NSAttributedString.Key: Any] = view.titleTextAttributes ?? [:]
             textAttributes[NSAttributedString.Key.font] = font
             view.titleTextAttributes = textAttributes
+
         case .backgroundColor(let color):
             view.backgroundColor = color
+
         case .tintColor(let value):
             view.tintColor = value
+
         case .barTintColor(let value):
             view.barTintColor = value
+
         case .isTranslucent(let value):
             view.isTranslucent = value
+
         case .shadowImage(let value):
             view.shadowImage = value
+
         case .backgroundImage(let value, let state):
             view.setBackgroundImage(value, for: state)
         }

@@ -121,6 +121,7 @@ public final class ModalPresenter {
                 popoverController.sourceRect = view.bounds
                 popoverController.permittedArrowDirections = .any
             }
+
         case .barButtonItem(let item):
             viewController.modalPresentationStyle = .popover
             if let popoverController = viewController.popoverPresentationController {

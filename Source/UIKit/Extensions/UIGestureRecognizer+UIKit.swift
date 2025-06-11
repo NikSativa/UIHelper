@@ -7,7 +7,6 @@ public extension UIGestureRecognizer {
         guard state == .ended else {
             return false
         }
-
         guard let view else {
             return false
         }

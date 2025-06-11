@@ -22,7 +22,6 @@ extension TableViewStyleProperty: StylePropertyTestable {
             return isEqual(color, color1)
         case (.backgroundColor(let color), .backgroundColor(let color1)):
             return isEqual(color, color1)
-
         case (.backgroundColor, _),
              (.estimatedRowHeight, _),
              (.rowHeight, _),
@@ -39,30 +38,29 @@ extension TableViewStyleProperty: StylePropertyTestable {
         switch self {
         case .estimatedRowHeight(let height):
             return tableView.estimatedRowHeight == height
+
         case .separatorStyle(let style):
             return tableView.separatorStyle == style
+
         case .rowHeight(let height):
             return tableView.rowHeight == height
+
         case .sectionHeaderHeight(let height):
             return tableView.sectionHeaderHeight == height
+
         case .sectionFooterHeight(let height):
             return tableView.sectionFooterHeight == height
+
         case .separatorInset(let margin):
             let actualInsets = tableView.separatorInset
             return (actualInsets.left == margin) && (actualInsets.right == margin)
+
         case .separatorColor(let color):
             return isEqual(color, tableView.separatorColor)
+
         case .backgroundColor(let color):
             return isEqual(color, tableView.backgroundColor)
         }
-    }
-
-    private func compare(view: UIView, with tableView: UITableView) -> Bool {
-        if let frame = tableView.tableFooterView?.frame {
-            return frame.width == view.frame.width
-                && frame.height == view.frame.height
-        }
-        return false
     }
 }
 #endif

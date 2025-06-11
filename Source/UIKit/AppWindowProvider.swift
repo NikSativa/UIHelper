@@ -28,6 +28,7 @@ extension AppWindowProvider: AppWindowProviding {
             assertionFailure("Cannot present a full screen modal when you don't have a rootViewController")
             return UIViewController()
         }
+
         return rootViewController
     }
 }

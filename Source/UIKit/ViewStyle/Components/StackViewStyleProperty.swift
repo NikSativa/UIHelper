@@ -17,8 +17,10 @@ extension StackViewStyleProperty: ApplicableStyleProperty {
         case .margins(let insets):
             view.layoutMargins = insets
             view.isLayoutMarginsRelativeArrangement = true
+
         case .spacing(let value):
             view.spacing = value
+
         case .axis(let value):
             view.axis = value
         }

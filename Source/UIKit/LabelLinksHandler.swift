@@ -59,7 +59,6 @@ public final class LabelLinksHandler<Link: LabelLink> {
         guard let label, let action else {
             return
         }
-
         guard sender.state == .ended else {
             return
         }

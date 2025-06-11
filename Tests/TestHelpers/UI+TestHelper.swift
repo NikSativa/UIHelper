@@ -63,15 +63,19 @@ public enum UITestHelper {
             case .fixed(let size):
                 view.widthAnchor.constraint(equalToConstant: size.width).isActive = true
                 view.heightAnchor.constraint(equalToConstant: size.height).isActive = true
+
             case .size(.flexible, .flexible):
                 applyLowPriority(view.widthAnchor).isActive = true
                 applyLowPriority(view.heightAnchor).isActive = true
+
             case .size(.flexible, .equalToSuperview):
                 applyLowPriority(view.widthAnchor).isActive = true
                 view.heightAnchor.constraint(equalTo: viewController.view.heightAnchor).isActive = true
+
             case .size(.equalToSuperview, .flexible):
                 view.widthAnchor.constraint(equalTo: viewController.view.widthAnchor).isActive = true
                 applyLowPriority(view.heightAnchor).isActive = true
+
             case .size(.equalToSuperview, .equalToSuperview):
                 view.widthAnchor.constraint(equalTo: viewController.view.widthAnchor).isActive = true
                 view.heightAnchor.constraint(equalTo: viewController.view.heightAnchor).isActive = true

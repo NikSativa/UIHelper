@@ -34,7 +34,8 @@ private struct SizeViewModifier: ViewModifier {
         case both(ScreenSize, ScreenSize)
     }
 
-    @Environment(\.windowSize) private var windowSize
+    @Environment(\.windowSize)
+    private var windowSize
 
     private let expected: Combination
     private let limit: CGSize
