@@ -34,8 +34,8 @@ private struct SizeViewModifier: ViewModifier {
         case both(ScreenSize, ScreenSize)
     }
 
-    @Environment(\.windowSize)
-    private var windowSize
+    @Environment(\.sceneSize)
+    private var sceneSize
 
     private let expected: Combination
     private let limit: CGSize
@@ -55,12 +55,12 @@ private struct SizeViewModifier: ViewModifier {
     private var isAvailable: Bool {
         switch expected {
         case .width(let size):
-            return size.isAvailable(for: windowSize.width, limit: limit.width)
+            return size.isAvailable(for: sceneSize.width, limit: limit.width)
         case .height(let size):
-            return size.isAvailable(for: windowSize.height, limit: limit.height)
+            return size.isAvailable(for: sceneSize.height, limit: limit.height)
         case .both(let width, let height):
-            return height.isAvailable(for: windowSize.width, limit: limit.width)
-                && width.isAvailable(for: windowSize.height, limit: limit.height)
+            return width.isAvailable(for: sceneSize.width, limit: limit.width)
+                && height.isAvailable(for: sceneSize.height, limit: limit.height)
         }
     }
 }

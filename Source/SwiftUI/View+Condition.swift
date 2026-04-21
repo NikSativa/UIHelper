@@ -26,13 +26,20 @@ public extension View {
     }
 
     @ViewBuilder
-    func iflet<T>(_ t: T?,
+    func ifLet<T>(_ t: T?,
                   content: (Self, T) -> some View) -> some View {
         if let t {
             content(self, t)
         } else {
             self
         }
+    }
+
+    @available(*, deprecated, renamed: "ifLet")
+    @ViewBuilder
+    func iflet<T>(_ t: T?,
+                  content: (Self, T) -> some View) -> some View {
+        ifLet(t, content: content)
     }
 }
 #endif

@@ -20,7 +20,7 @@ private struct SelfSizeKey: PreferenceKey {
 
 @available(iOS 15.0, *)
 private struct SelfSizeModifier: ViewModifier {
-    let size: @Sendable (CGSize) -> Void
+    let size: (CGSize) -> Void
 
     init(size: Binding<CGSize>) {
         self.size = { [size] new in
@@ -29,15 +29,16 @@ private struct SelfSizeModifier: ViewModifier {
     }
 
     func body(content: Content) -> some View {
-        content.background {
-            GeometryReader { proxy in
-                Color.clear
-                    .preference(key: SelfSizeKey.self, value: proxy.size)
-                    .onPreferenceChange(SelfSizeKey.self) { [size] new in
-                        size(new)
-                    }
+        content
+            .background(
+                GeometryReader { proxy in
+                    Color.clear
+                        .preference(key: SelfSizeKey.self, value: proxy.size)
+                }
+            )
+            .onPreferenceChange(SelfSizeKey.self) { [size] new in
+                size(new)
             }
-        }
     }
 }
 #endif
