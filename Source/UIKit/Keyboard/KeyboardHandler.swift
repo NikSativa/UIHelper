@@ -1,17 +1,10 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
-#if swift(>=6.0)
 @MainActor
 public protocol KeyboardHandlerDelegate: AnyObject, Sendable {
     func didChange(bottomContentInset inset: CGFloat)
 }
-#else
-@MainActor
-public protocol KeyboardHandlerDelegate: AnyObject {
-    func didChange(bottomContentInset inset: CGFloat)
-}
-#endif
 
 @MainActor
 public final class KeyboardHandler {
@@ -32,26 +25,18 @@ public final class KeyboardHandler {
         observers.append(
             notificationCenter.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { [weak self] notification in
                 let notification = UnsafeSendable(notification)
-                #if swift(>=6.0)
                 MainActor.assumeIsolated {
                     self?.keyboardWillShow(notification.value)
                 }
-                #else
-                self?.keyboardWillShow(notification.value)
-                #endif
             }
         )
 
         observers.append(
             notificationCenter.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { [weak self] notification in
                 let notification = UnsafeSendable(notification)
-                #if swift(>=6.0)
                 MainActor.assumeIsolated {
                     self?.keyboardWillHide(notification.value)
                 }
-                #else
-                self?.keyboardWillHide(notification.value)
-                #endif
             }
         )
     }
@@ -159,7 +144,6 @@ extension KeyboardHandler: KeyboardHandling {
     }
 }
 
-#if swift(>=6.0)
 extension KeyboardHandler: @unchecked Sendable {}
 
 private struct UnsafeSendable<T>: @unchecked Sendable {
@@ -169,14 +153,5 @@ private struct UnsafeSendable<T>: @unchecked Sendable {
         self.value = value
     }
 }
-#else
-private struct UnsafeSendable<T> {
-    let value: T
-
-    init(_ value: T) {
-        self.value = value
-    }
-}
-#endif
 
 #endif

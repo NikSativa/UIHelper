@@ -5,12 +5,8 @@ public enum ScreenSize {
     case compact
     case large
 
-    #if swift(>=6.0)
     @MainActor
     public static var defaultLimit: CGSize = .init(width: 400, height: 400)
-    #else
-    public static var defaultLimit: CGSize = .init(width: 400, height: 400)
-    #endif
 }
 
 public extension View {

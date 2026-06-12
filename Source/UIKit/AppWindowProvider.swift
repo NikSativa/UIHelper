@@ -7,7 +7,7 @@ public protocol AppWindowProviding: AppRootViewControllerProviding {
 }
 
 @MainActor
-public final class AppWindowProvider {
+public final class AppWindowProvider: @unchecked Sendable {
     private let window: UIWindow
 
     public init(window: UIWindow) {
@@ -32,9 +32,5 @@ extension AppWindowProvider: AppWindowProviding {
         return rootViewController
     }
 }
-
-#if swift(>=6.0)
-extension AppWindowProvider: @unchecked Sendable {}
-#endif
 
 #endif

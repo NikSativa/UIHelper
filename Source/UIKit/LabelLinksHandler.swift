@@ -1,17 +1,10 @@
 #if canImport(UIKit) && os(iOS)
 import UIKit
 
-#if swift(>=6.0)
 @MainActor
 public protocol LabelLink: Sendable {
     var tappableText: String { get }
 }
-#else
-@MainActor
-public protocol LabelLink {
-    var tappableText: String { get }
-}
-#endif
 
 // MARK: - URL + LabelLink
 

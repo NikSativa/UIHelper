@@ -10,11 +10,7 @@ public enum ModalPresenterSource {
 public protocol ModalPresenting {
     typealias Source = ModalPresenterSource
 
-    #if swift(>=6.0)
     typealias Callback = () -> Void
-    #else
-    typealias Callback = @Sendable () -> Void
-    #endif
 
     var topPresenter: UIViewController { get }
 
@@ -144,15 +140,10 @@ public final class ModalPresenter {
 
         isChecking = true
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-            #if swift(>=6.0)
             MainActor.assumeIsolated {
                 self?.isChecking = false
                 self?.checkViewControllerAvailability()
             }
-            #else
-            self?.isChecking = false
-            self?.checkViewControllerAvailability()
-            #endif
         }
     }
 
@@ -222,10 +213,8 @@ private extension ModalPresenter {
     }
 }
 
-#if swift(>=6.0)
 extension ModalPresenterSource: @unchecked Sendable {}
 extension ModalPresenter.State: @unchecked Sendable {}
 extension ModalPresenter: @unchecked Sendable {}
-#endif
 
 #endif
